@@ -1,4 +1,9 @@
 // Import our custom CSS
-import '../sass/main.scss';
+import "../sass/main.scss";
+import "bootstrap";
 
-console.log('Do your work here!');
+// Import components
+import "./layouts/NavApp";
+import "./layouts/FooterApp";
+import "./pages/DashboardPage";
+import "./components/StoryCard";

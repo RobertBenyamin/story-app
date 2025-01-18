@@ -1,0 +1,24 @@
+@use "../abstracts/variables" as v;
+
+.navbar {
+  background-color: v.$primary-color;
+  
+  h5 {
+    font-weight: bold;
+    color: v.$light-color;
+  }
+
+  &-brand {
+    font-weight: bold;
+  }
+
+  &-nav {
+    .nav-link {
+      color: v.$light-color;
+
+      &:hover {
+        color: v.$light-color;
+      }
+    }
+  }
+}
