@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "start-dev": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "serve": "http-server dist --port 9000",
+    "build-serve": "npm run build && npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "your_name <your_email>",
+  "author": "Robert Benyamin <robertbenyamino@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -29,6 +33,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.2",
+    "http-server": "^14.1.1",
     "lit": "3.2.1"
   }
 }
