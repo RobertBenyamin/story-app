@@ -1,0 +1,10 @@
+@use '../abstracts/variables' as v;
+
+.form-control {
+  border-radius: v.$border-radius;
+  
+  &:focus {
+    border-color: v.$primary-color;
+    box-shadow: v.$box-shadow;
+  }
+}

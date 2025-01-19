@@ -9,6 +9,11 @@ class DashboardPage extends LitElement {
     super();
     this.stories = [];
     this._loadStories();
+    
+    this.addEventListener('story-added', (e) => {
+      this.stories = [e.detail.story, ...this.stories];
+      this.requestUpdate();
+    });
   }
 
   createRenderRoot() {
@@ -17,9 +22,17 @@ class DashboardPage extends LitElement {
 
   async _loadStories() {
     try {
+      const localStories = localStorage.getItem('stories');
+      if (localStories) {
+        this.stories = JSON.parse(localStories);
+        return;
+      }
+
       const response = await fetch("/data/DATA.json");
-      this.stories = await response.json();
-      this.stories = this.stories.listStory;
+      const data = await response.json();
+      this.stories = data.listStory;
+      
+      localStorage.setItem('stories', JSON.stringify(this.stories));
     } catch (error) {
       console.error("Error loading stories:", error);
     }
