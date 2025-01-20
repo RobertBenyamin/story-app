@@ -9,6 +9,11 @@ class StoryCard extends LitElement {
     return this;
   }
 
+  formatDate(date) {
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return new Date(date).toLocaleDateString('id-ID', options);
+  }
+
   render() {
     return html`
       <div class="card mb-4">
@@ -22,7 +27,7 @@ class StoryCard extends LitElement {
           <p class="card-text">${this.story.description}</p>
           <p class="card-text">
             <small class="text-muted">
-              Posted on ${new Date(this.story.createdAt).toLocaleDateString()}
+              Posted on ${this.formatDate(this.story.createdAt)}
             </small>
           </p>
         </div>
