@@ -102,6 +102,7 @@ class LoginPage extends LitElement {
       const { token } = response.data.loginResult;
 
       Utils.setUserToken(Config.USER_TOKEN_KEY, token);
+      window.dispatchEvent(new Event('user-login'));
       window.location.hash = "#/";
     } catch (error) {
       this.errorMessage = error.response?.data?.message || "Login failed";

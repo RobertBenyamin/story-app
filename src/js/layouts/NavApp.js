@@ -10,6 +10,10 @@ class NavApp extends LitElement {
   constructor() {
     super();
     this.isLoggedIn = !!Utils.getUserToken(Config.USER_TOKEN_KEY);
+
+    window.addEventListener('user-login', () => {
+      this.isLoggedIn = true;
+    });
   }
 
   createRenderRoot() {
