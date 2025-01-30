@@ -7,12 +7,14 @@ class LoginPage extends LitElement {
   static properties = {
     errorMessage: { type: String },
     isLoading: { type: Boolean },
+    showPassword: { type: Boolean },
   };
 
   constructor() {
     super();
     this.errorMessage = "";
     this.isLoading = false;
+    this.showPassword = false;
   }
 
   createRenderRoot() {
@@ -43,13 +45,27 @@ class LoginPage extends LitElement {
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    required
-                    minlength="8"
-                  />
+                  <div class="input-group">
+                    <input
+                      type="${this.showPassword ? "text" : "password"}"
+                      class="form-control"
+                      id="password"
+                      required
+                      minlength="8"
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      @click=${this._togglePassword}
+                    >
+                      <i
+                        class="bi ${this.showPassword
+                          ? "bi-eye-slash"
+                          : "bi-eye"}"
+                        style="cursor: pointer; z-index: 100;"
+                      ></i>
+                    </button>
+                  </div>
                 </div>
                 <button
                   type="submit"
@@ -67,6 +83,10 @@ class LoginPage extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  _togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
   async _handleSubmit(e) {
