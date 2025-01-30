@@ -20,8 +20,8 @@ const Stories = {
     });
   },
 
-  async store({ description, photo, lat, lon }) {
-    const data = { description, photo, lat, lon };
+  async store({ description, photo }) {
+    const data = { description, photo };
 
     return await axios.post(ApiEndpoint.STORE_STORY, data, {
       headers: {
